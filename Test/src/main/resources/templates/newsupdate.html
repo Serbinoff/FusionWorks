@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update News</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      <!-- Include _menu.html -->
+      <th:block th:include="/admin"></th:block>  
+      
+	<h1>Update News</h1>
+    <form action="#" th:action="@{'/editNews/' + ${posts.id}}" th:object="${posts}" method="post">
+    	<p>News title: <input type="text" th:field="*{name}" /></p>
+        <p>News content: <textarea th:field="*{text}"></textarea></p>
+        <p>News preview: <textarea th:field="*{preview}"></textarea></p>
+        <p><input type="submit" value="Update" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Last news in the world</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      <!-- Include _menu.html -->
+      <th:block th:include="/menu"></th:block>  
+      
+	<h1>Last News</h1>
+	<p th:each="post : ${posts}">
+		<h3 th:text="${post.name}"></h3>
+		<div th:text="${post.preview}"></div>
+		<a th:href="@{/all}">Читать полностью</a>
+		<div>---------------------------------------------------------</div>
+	</p>
+</body>
+</html>

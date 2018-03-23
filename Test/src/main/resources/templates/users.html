@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All news</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      <!-- Include _menu.html -->
+      <th:block th:include="/admin"></th:block>  
+      
+	<h1>Users Management</h1>
+	    <table border="1" cellpadding="5" cellspacing="1" >
+      <tr>
+          <th>Id</th>
+          <th>Role</th>
+          <th>Login</th>
+          <th>Password</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+      <tr th:each= "user : ${users}">
+             <td th:text= "${user.userId}"></td>
+             <td> <div th:switch="${user.roleId}">
+  					<p th:case="1">Admin</p>
+  					<p th:case="2">Publisher</p>
+  					<p th:case="3">User</p>
+				  </div>
+           </td>  
+           <td th:text= "${user.userName}"></td>
+           <td th:text= "${user.encrytedPassword}"></td>
+           <td>
+                <a th:href="@{'/updateUser/' + ${user.userId}}">Edit</a>
+           </td>
+           <td>
+                <a th:href="@{'/deleteUser/' + ${user.userId}}">Delete</a>
+           </td>
+         </tr>
+    </table>
+ <br />
+    <a href="/admin/adduser/"><b>Add User</b></a>
+</body>
+</html>
